@@ -3,13 +3,13 @@
 		<title>	Steam Api	</title>
 	
 	</head>
-	<body>
-		<h1>	STEAM </h1>
-		<table border = 1 align = "center">
+	<body style = 'background-color: lightcyan'>
+		<h1 align = 'center' style="color: palevioletred">	STEAM API </h1>
+		<table border = 1 align = "left">
 			<form> 
 				<tr>
-					<td> Enter APP name to search	</td>
-					<td> <input type ="text" id ="info" > </td>
+					<td> SEARCH	</td>
+					<td> <input type ="text" id ="info" placeholder="Enter APP name to search"> </td>
 				
 				</tr>
 				<tr>
@@ -17,14 +17,25 @@
 				</tr>	
 			</form>
 		</table>
-		APP INFO : <span id = "all" > </span>	
-		<h1 align = 'center' > APP DETAILS </h1>
-		TYPE -	<span id = 'types' > </span> <br>
-		APP NAME -	<span id = 'names' >  </span> <br>
-		STEAM APPID - <span id = 'appid' > </span> <br>
-		REQUIRED AGE - <span id = 'age' >	</span> <br>
-		GENRE - <span id = 'genres' > </span> <br>
-		HEADER_IMAGE - <img id = 'myImg' > <br>
+		<br> <br> <br>
+		<h1 align = 'center'  style="color: green"> APP DETAILS </h1>
+		<table >
+		<tr>
+			<td>TYPE 	</td> <td><span id = 'types' > </span> </td>
+		</tr> <br>
+		<tr> 
+			<td>APP NAME </td> <td><span id = 'names' >  </span> </td>
+		</tr> <br>
+		<tr>
+		<td>	APPID  </td> <td><span id = 'appid' > </span> </td> 
+		</tr> <br>
+		<tr>
+		<td>REQUIRED AGE  </td> <td><span id = 'age' >	</span></td> 
+		</tr><br>
+		<tr> <td>GENRE  </td><td><span id = 'genres' > </span> </td>
+		</tr> <br>
+		</table>
+		<img id = 'myImg' > <br>
 		ABOUT <p style="text-align: justify;" id = 'about'> </p>
 
 			
