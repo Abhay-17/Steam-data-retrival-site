@@ -1,0 +1,88 @@
+<html>
+	<head>
+		<title>	Steam Api	</title>
+	
+	</head>
+	<body>
+		<h1>	STEAM </h1>
+		<table border = 1 align = "center">
+			<form> 
+				<tr>
+					<td> Enter APP name to search	</td>
+					<td> <input type ="text" id ="info" > </td>
+				
+				</tr>
+				<tr>
+					<th colspan = "2" align ="center"> <input type ="submit" value ="submit" id ="submit" > </th>
+				</tr>	
+			</form>
+		</table>
+		APP INFO : <span id = "all" > </span>	
+		<h1 align = 'center' > APP DETAILS </h1>
+		TYPE -	<span id = 'types' > </span> <br>
+		APP NAME -	<span id = 'names' >  </span> <br>
+		STEAM APPID - <span id = 'appid' > </span> <br>
+		REQUIRED AGE - <span id = 'age' >	</span> <br>
+		GENRE - <span id = 'genres' > </span> <br>
+		HEADER_IMAGE - <img id = 'myImg' > <br>
+		ABOUT <p style="text-align: justify;" id = 'about'> </p>
+
+			
+
+		<script>
+			let genre = ' ';
+			const options = {
+				method: 'GET',
+				headers: {
+					'X-RapidAPI-Key': '433aaa23e3msh49e3dd1afc3bb97p1c32d4jsn36e9236c7142',
+					'X-RapidAPI-Host': 'steam-api7.p.rapidapi.com'
+				}
+			};
+
+			const showappdetails = (code)  => {
+				fetch('https://steam-api7.p.rapidapi.com/appDetails/' + code ,options )
+				.then( (response) => {return response.json() } )
+				.then( (data) => { console.log(data) 
+					
+					names.innerHTML = data.name ;
+					types.innerHTML = data.type ;
+					appid.innerHTML = data.steam_appid ;
+					age.innerHTML = data.required_age ;
+					for(let i = 0 ; i < data.genres.length ; i++) {
+						genre += data.genres[i].description + ',' ;
+					}
+					genres.innerHTML = genre ;
+					document.getElementById("myImg").src = data.header_image;
+
+					about.innerHTML = data.about_the_game ;
+				}  )
+					
+			}
+			
+
+
+			const getappid = (info) => {
+				fetch ('https://steam-api7.p.rapidapi.com/search?query='+ info + '&limit=15&orderby' ,options )
+				.then( (response) => {return response.json() } )
+				.then( (data) => {console.log(data);
+						showappdetails(data.results[0].appid);
+						
+				})
+					
+					
+			};
+			
+
+			submit.addEventListener('click' ,(event) => {
+				event.preventDefault();
+			 	getappid(info.value);
+				
+				
+				
+				
+			})
+			
+		</script>
+	</body>
+
+</html>
